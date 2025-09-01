@@ -1,0 +1,67 @@
+//打印1000到2000间的闰年
+//普通年份：如果年份能被4整除但不能被100整除，则是闰年。
+//世纪年份：如果年份是整百数，它必须能被400整除才是闰年。
+//(1)
+#include <stdio.h>
+int main()
+{
+	int year = 0;
+	for (year = 1000; year <= 2000; year++)
+	{
+		if (year % 4 == 0)
+		{
+			if (year % 100 != 0)
+			{
+				printf("%d\n", year);
+			}
+		}
+	    if (year % 400 == 0)
+		{
+			printf("%d\n", year);
+		}
+	}
+	return 0;
+}
+
+
+//(2)
+#include <stdio.h>
+int main()
+{
+	int year = 0;
+	for (year = 1000; year <= 2000; year++)
+	{
+		if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0))
+		{
+			printf("%d\n", year);
+		}
+	}
+	return 0;
+}
+
+
+//(3)函数
+#include <stdio.h>
+int is_leap_year(int y)
+{
+	if ((y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0))
+	{
+		return 1;
+	}
+	else 
+	{
+		return 0;
+	}
+}
+int main()
+{
+	int year = 0;
+	for (year = 1000; year <= 2000; year++)
+	{
+		if (is_leap_year(year))
+		{
+			printf("%d\n", year);
+		}
+	}
+	return 0;
+}
